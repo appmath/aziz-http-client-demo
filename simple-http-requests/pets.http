@@ -1,0 +1,21 @@
+#GET http://{{host}}/users
+GET http://{{host}}/users
+Accept: application/json
+
+> {%
+   client.test("Request executed successfully", function (){
+       client.assert(response.status === 200, "Response status is not 200");
+   })
+   client.test("Request has 500 status", function (){
+       client.assert(response.status === 500, "Response status is not 200");
+   })
+ %}
+### Create My New User
+POST http://{{host}}/users
+Content-Type: application/json
+
+{
+  "name": "Aziz"
+}
+
+###
